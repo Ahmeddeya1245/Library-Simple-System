@@ -21,11 +21,11 @@ class User:
                 break
 
     def simple_repr(self, is_detailed=False):
-        ret = f'User Name : {self.name :15} - id: {self.id}'  # ret represent basic information about User -> user name is detected by 15 char only
+        ret = f'👤 User Name: {self.name:15} | 🆔 ID: {self.id}'
         if self.borrowed_books and is_detailed:
-            ret += '\n\t Borrowed Books : \n\t'
+            ret += '\n📚 Currently Borrowed Books:'
             for book in self.borrowed_books:
-                ret += f'\t {str(book)}\n'
+                ret += f'\n   📖 {str(book)}'
         return ret
 
     def __repr__(self):
