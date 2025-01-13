@@ -19,7 +19,7 @@ class FrontendManager:
         self.backend = BackendManager()
         self.add_dummy_data()
 
-     def print_menu(self):
+    def print_menu(self):
         print('\n🎯 Library Management System Menu:')
         messages = [
             '📚 Add New Book',
@@ -121,8 +121,12 @@ class FrontendManager:
                     print(f'👤 {user}')
 
     def print_users(self):
-        users_str = '\n'.join([str(user) for user in self.backend.users])
-        print(users_str)
+        print("👥 Registered Users List:")
+        if not self.backend.users:
+            print("📭 No users registered in the system")
+        else:
+            users_str = '\n'.join([f"👤 {str(user)}" for user in self.backend.users])
+            print(users_str)
 
     def run(self):
         while True:
