@@ -50,74 +50,75 @@ class FrontendManager:
         self.backend.borrow_book("Charlie", "Clean Code")
 
     def add_book(self):
-        print("Enter Books Info")
-        name = str(input("Enter Book Name : "))
-        id = int(input("Enter Book Id : "))
-        Total_quantity = int(input("Enter Quantity : "))
+        print("📚 Add New Book Details 📚")
+        name = str(input("📖 Enter Book Name: "))
+        id = int(input("🔢 Enter Book ID: "))
+        Total_quantity = int(input("📦 Enter Quantity: "))
         self.backend.add_book(name, id, Total_quantity)
+        print("✅ Book added successfully!")
 
     def print_books(self):
-        print(f"All Books in the Library -> {self.backend.Get_all_books()}")
+        print(f"📚 Library Book Collection:\n{self.backend.Get_all_books()}")
 
     def print_name_prefix(self):
-        pre = str(input("Enter book name Prefix : "))
-        print(self.backend.get_book_with_prefix(pre))
+        pre = str(input("🔍 Enter book name prefix to search: "))
+        print(f"📑 Search Results:\n{self.backend.get_book_with_prefix(pre)}")
 
     def add_user(self):
-        print("Enter User Info  ")
-        name = str(input("Enter User Name : "))
-        self.backend.add_user(name)  # Fix: Call backend.add_user
-        print("User Added !!")
+        print("👤 New User Registration")
+        name = str(input("📝 Enter User Name: "))
+        self.backend.add_user(name)
+        print("✅ User registered successfully!")
 
     def read_user_name_and_book_name(self, trials=3):
         trials += 1
         while trials > 0:
             trials -= 1
-            print('Enter user name and book name')
-            user_name = input('User name: ')
+            print('📝 Please provide the following details:')
+            user_name = input('👤 User name: ')
             if self.backend.get_User_by_Name(user_name) is None:
-                print('Invalid user name!')
+                print('❌ Invalid user name!')
                 continue
-            book_name = input('Book name: ')
+            book_name = input('📖 Book name: ')
             if self.backend.get_book_by_name(book_name) is None:
-                print('Invalid book name!')
+                print('❌ Invalid book name!')
                 continue
             return user_name, book_name
-        print('You did several trials! Try later.')
+        print('⚠️ Too many failed attempts! Please try again later.')
         return None, None
 
     def borrow_book(self):
         name, book = self.read_user_name_and_book_name()
         if name is None or book is None:
-            print("Invalid input. Operation aborted.")
+            print("❌ Invalid input. Operation cancelled.")
             return
         if self.backend.borrow_book(name, book):
-            print("Book borrowed successfully!")
+            print("✅ Book borrowed successfully!")
         else:
-            print("Failed to borrow the book!")
+            print("❌ Failed to borrow the book!")
 
     def return_book(self):
         name, book = self.read_user_name_and_book_name()
         if name is None or book is None:
-            print("Invalid input. Operation aborted.")
+            print("❌ Invalid input. Operation cancelled.")
             return
         if self.backend.return_book(name, book):
-            print("Book returned successfully!")
+            print("✅ Book returned successfully!")
         else:
-            print("Failed to return the book!")
+            print("❌ Failed to return the book!")
 
     def print_users_borrowed_book(self):
-        book_name = input('Book name: ')
+        book_name = input('📖 Enter Book name: ')
         if self.backend.get_book_by_name(book_name) is None:
-            print('Invalid book name!')
+            print('❌ Invalid book name!')
         else:
-            users_lst = self.backend.get_users_borrowd_book(book_name)  # Fix: Correct method name
+            users_lst = self.backend.get_users_borrowd_book(book_name)
             if not users_lst:
-                print('\nNo one borrowed this book')
+                print('📢 No users have borrowed this book')
             else:
-                print('\nList of users borrowed this book')
+                print('📋 Users who borrowed this book:')
                 for user in users_lst:
-                    print(user)
+                    print(f'👤 {user}')
 
     def print_users(self):
         users_str = '\n'.join([str(user) for user in self.backend.users])
