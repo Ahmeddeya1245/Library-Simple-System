@@ -1,146 +1,99 @@
-Library Management System
-This is a simple Library Management System implemented in Python. The system allows users to manage books, users, and borrowing/returning operations. It consists of a backend for managing data and a frontend for interacting with the system via a command-line interface.
+# Library Management System
 
-Features
-Book Management:
+A simple Python-based library management system that allows librarians to manage books, users, and borrowing operations.
 
-Add new books to the library.
+## Features
 
-Search for books by name or prefix.
+- Book Management
+  - Add new books with name, ID, and quantity
+  - Search books by prefix
+  - View all available books
+  - Track total copies and borrowed copies
 
-Track the total quantity and borrowed copies of each book.
+- User Management
+  - Add new users
+  - View all users and their borrowing history
+  - Track borrowed books per user
 
-User Management:
+- Borrowing Operations
+  - Borrow books
+  - Return books
+  - View users who borrowed a specific book
 
-Add new users to the system.
+## Project Structure
 
-Track which books a user has borrowed.
+- `Main.py` - Entry point of the application
+- `FrontendManager.py` - Handles user interface and input/output operations
+- `Backend.py` - Contains core business logic and data management
+- `Book.py` - Book class definition and related operations
+- `User.py` - User class definition and related operations
 
-Borrowing and Returning:
+## Getting Started
 
-Users can borrow books if copies are available.
+### Prerequisites
 
-Users can return borrowed books.
+- Python 3.x
 
-Reporting:
+### Installation
 
-List all books in the library.
-
-List all users and their borrowed books.
-
-Find users who have borrowed a specific book.
-
-Project Structure
-The project is organized into the following files:
-
-Backend.py: Contains the BackendManager class, which manages books, users, and borrowing/returning operations.
-
-Book.py: Contains the Book class, which represents a book in the library.
-
-User.py: Contains the User class, which represents a user in the system.
-
-FrontendManager.py: Contains the FrontendManager class, which provides a command-line interface for interacting with the system.
-
-Main.py: The entry point of the application. It initializes and runs the FrontendManager.
-
-How to Run the Project
-Prerequisites:
-
-Ensure you have Python 3.x installed on your system.
-
-Clone the Repository:
-
-bash
-Copy
-git clone <repository-url>
-cd <repository-folder>
-Run the Application:
-
-Execute the Main.py file to start the application:
-
-bash
-Copy
+1. Clone the repository or download the source files
+2. Ensure all Python files are in the same directory
+3. Run the application using:
+```bash
 python Main.py
-Using the Application:
+```
 
-Follow the on-screen menu to perform operations such as adding books, adding users, borrowing books, returning books, and viewing reports.
+### Usage
 
-Example Workflow
-Add Books:
+The system provides a menu-driven interface with the following options:
 
-Use the "Add book" option to add new books to the library. Provide the book name, ID, and total quantity.
+1. Add book
+2. Print Library Books
+3. Print Books By Prefix
+4. Add User
+5. Borrow Book
+6. Return Book
+7. Print User Borrowed
+8. Print Users
+9. Exit
 
-Add Users:
+### Demo Data
 
-Use the "Add User" option to add new users to the system. Provide the user's name.
+The system comes pre-loaded with sample data including:
+- Books: "Python Programming", "Data Structures and Algorithms", "Clean Code", "The Pragmatic Programmer"
+- Users: Alice, Bob, Charlie
+- Some pre-configured borrowing relationships
 
-Borrow Books:
+## Class Structure
 
-Use the "Borrow Book" option to allow a user to borrow a book. Provide the user's name and the book's name.
+### Book Class
+- Properties: name, id, total_quantity, total_borrowed
+- Methods for borrowing and returning copies
 
-Return Books:
+### User Class
+- Properties: name, id, borrowed_books
+- Methods for managing borrowed books
 
-Use the "Return Book" option to allow a user to return a borrowed book. Provide the user's name and the book's name.
+### BackendManager Class
+- Manages all data operations
+- Handles book and user management
+- Processes borrowing transactions
 
-View Reports:
+### FrontendManager Class
+- Handles user interface
+- Manages input validation
+- Coordinates between user input and backend operations
 
-Use the "Print Library Books" option to view all books in the library.
+## Error Handling
 
-Use the "Print Users" option to view all users and their borrowed books.
+The system includes basic error handling for:
+- Invalid user inputs
+- Non-existent books or users
+- Unavailable books (all copies borrowed)
+- Invalid borrowing/returning operations
 
-Use the "Print User Borrowed" option to view users who have borrowed a specific book.
+## Limitations
 
-Dummy Data
-The system comes preloaded with dummy data for testing:
-
-Books:
-
-"Python Programming" (ID: 101, Quantity: 5)
-
-"Data Structures and Algorithms" (ID: 102, Quantity: 3)
-
-"Clean Code" (ID: 103, Quantity: 2)
-
-"The Pragmatic Programmer" (ID: 104, Quantity: 4)
-
-Users:
-
-Alice (ID: 1)
-
-Bob (ID: 2)
-
-Charlie (ID: 3)
-
-Code Examples
-Adding a Book
-python
-Copy
-backend.add_book("Advanced Python", 105, 10)
-Borrowing a Book
-python
-Copy
-backend.borrow_book("Alice", "Python Programming")
-Returning a Book
-python
-Copy
-backend.return_book("Alice", "Python Programming")
-Listing All Books
-python
-Copy
-print(backend.Get_all_books())
-Contributing
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
-
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Contact
-For questions or feedback, please contact:
-
-Your Name
-
-Email: your.email@example.com
-
-GitHub: Your GitHub Profile
-
-Enjoy using the Library Management System! 😊
+- Data is not persistent (resets when program closes)
+- No authentication system
+- Single library instance only
