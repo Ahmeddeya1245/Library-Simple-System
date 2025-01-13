@@ -19,22 +19,22 @@ class FrontendManager:
         self.backend = BackendManager()
         self.add_dummy_data()
 
-    def print_menu(self):
-        print('\nProgram Options:')
+     def print_menu(self):
+        print('\n🎯 Library Management System Menu:')
         messages = [
-            'Add book',
-            'Print Library Books',
-            'Print Books By Prefix',
-            'Add User',
-            'Borrow Book',
-            'Return Book',
-            'Print User Borrowed',
-            'Print Users',
-            'Exit'
+            '📚 Add New Book',
+            '📖 View All Library Books',
+            '🔍 Search Books By Prefix',
+            '👥 Register New User',
+            '📝 Borrow a Book',
+            '↩️ Return a Book',
+            '👤 View Book Borrowers',
+            '📋 View All Users',
+            '🚪 Exit System'
         ]
         messages = [f'{idx + 1}) {msg}' for idx, msg in enumerate(messages)]
         print('\n'.join(messages))
-        msg = f'Enter your choice (from 1 to {len(messages)}): '
+        msg = f'\n🔄 Please enter your choice (1-{len(messages)}): '
         return input_valid_int(msg, 1, len(messages))
 
     def add_dummy_data(self):
